@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluent-bit
+  namespace: argocd
+spec:
+  destination:
+    namespace: fluent-bit
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: fluent-bit
+    repoURL: https://github.com/other-juan/mipractica.git
+    targetRevision: development
+
