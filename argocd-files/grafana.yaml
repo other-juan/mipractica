@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+  namespace: grafana
+spec:
+  destination:
+  namespace: grafana
+  server: "https://kubernetes.default.svc"
+project: default
+source:
+  path: loki-stack
+  repoURL: https://github.com/other-juan/mipractica.git
+  targetRevision: HEAD
+
