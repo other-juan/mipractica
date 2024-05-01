@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitlab
+  namespace: argocd
+spec:
+  destination:
+    namespace: gitlab
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: gitlab-ce
+    repoURL: https://github.com/other-juan/mipractica.git
+    targetRevision: development
+    helm:
+      # releaseName: 
+      valueFiles:
+      - values-test.yaml
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
